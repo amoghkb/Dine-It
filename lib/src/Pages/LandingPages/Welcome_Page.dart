@@ -40,7 +40,11 @@ class _Welcome_PageState extends State<Welcome_Page> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => CustomerSignup(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CustomerSignup(),
+                          ));
                     },
                     child: Text(
                       "Get Started",
@@ -63,7 +67,7 @@ class _Welcome_PageState extends State<Welcome_Page> {
                         );
                       },
                       child: Text(
-                        "Sign In",
+                        "LogIn",
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
                           color: Colors.blue, // Added color for better UX

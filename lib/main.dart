@@ -1,7 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dineit/firebase_options.dart';
+import 'package:dineit/src/Pages/HomeScreens/HomeScreenOfApp.dart';
 import 'package:dineit/src/Pages/LandingPages/Welcome_Page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(DineIt());
 }
 
@@ -16,9 +24,31 @@ class _DineItState extends State<DineIt> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: "Nunito-SemiBold.ttf"),
-      home: Welcome_Page(),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(fontFamily: "Nunito-SemiBold.ttf"),
+        home: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection("Users").snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(
+                    color: Color.fromRGBO(242, 144, 87, 1),
+                  ),
+                ),
+              );
+            } else if (snapshot.hasError) {
+              return Scaffold(
+                body: Center(
+                  child: Text("Something Went Wrong"),
+                ),
+              );
+            } else if (snapshot.hasData) {
+              return Homescreenofapp();
+            } else {
+              return Welcome_Page();
+            }
+          },
+        ));
   }
 }
