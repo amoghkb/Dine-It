@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class CustomerLogin extends StatefulWidget {
-  const CustomerLogin({super.key});
+class CustomerSignup extends StatefulWidget {
+  const CustomerSignup({super.key});
 
   @override
-  State<CustomerLogin> createState() => _CustomerLoginState();
+  State<CustomerSignup> createState() => _CustomerSignupState();
 }
 
-class _CustomerLoginState extends State<CustomerLogin> {
-  TextEditingController _LoginEmailController = TextEditingController();
-  TextEditingController _LoginPasswordController = TextEditingController();
+class _CustomerSignupState extends State<CustomerSignup> {
+  TextEditingController _SignupEmailController = TextEditingController();
+  TextEditingController _SignupPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Text(
-                  "Log In",
+                  "Sign Up",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
                 ),
               ),
@@ -66,7 +66,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
                           return null;
                         }
                       },
-                      controller: _LoginEmailController,
+                      controller: _SignupEmailController,
                     ),
                   ),
                   Padding(
@@ -97,7 +97,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
                           return null;
                         }
                       },
-                      controller: _LoginPasswordController,
+                      controller: _SignupPasswordController,
                     ),
                   ),
                   Padding(
@@ -112,7 +112,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
                       child: ElevatedButton(
                         onPressed: () {},
                         child: Text(
-                          "Login",
+                          "Sign Up",
                           style: TextStyle(color: Colors.white),
                         ),
                         style: ButtonStyle(
@@ -127,18 +127,17 @@ class _CustomerLoginState extends State<CustomerLogin> {
             ],
           ),
           Positioned(
-              top: 600,
-              right: 150,
-              height: 350,
-              width: 350,
-              child:
-                  Image.asset("assets/images/Landing_Images/bluesticks.png")),
+              top: 750,
+              right: 290,
+              height: 200,
+              width: 200,
+              child: Image.asset("assets/images/Landing_Images/purple.png")),
           Positioned(
               top: -70,
               left: 200,
               height: 300,
               width: 300,
-              child: Image.asset("assets/images/Landing_Images/4.png")),
+              child: Image.asset("assets/images/Landing_Images/6.png")),
         ],
       ),
     );
