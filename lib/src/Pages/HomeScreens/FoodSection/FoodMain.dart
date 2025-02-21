@@ -1,8 +1,8 @@
+import 'package:dineit/src/Pages/HomeScreens/FoodSection/Special%20Food/Food_Category.dart';
+import 'package:dineit/src/Pages/LandingPages/Welcome_Page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../LandingPages/Customer_Login.dart';
-import 'Special Food/FoodItems.dart';
 import 'Special Food/SpecialFood.dart';
 
 class Foodmain extends StatefulWidget {
@@ -37,8 +37,11 @@ class _FoodmainState extends State<Foodmain> {
               child: ElevatedButton(
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CustomerLogin()));
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => Welcome_Page()),
+                    (route) => false,
+                  );
                 },
                 child: Text(
                   "Log Out",
@@ -95,7 +98,7 @@ class _FoodmainState extends State<Foodmain> {
           )),
 
           // Grid Section (SliverGrid)
-          Fooditems(),
+          FoodCategory(),
         ],
       ),
     );

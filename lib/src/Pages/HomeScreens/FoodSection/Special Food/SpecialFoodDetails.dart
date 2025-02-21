@@ -10,6 +10,11 @@ class Specialfooddetails extends StatefulWidget {
 class _SpecialfooddetailsState extends State<Specialfooddetails> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(255, 244, 230, 1),
+      body: Center(
+        child: Text("Today Special"),
+      ),
+    );
   }
 }
