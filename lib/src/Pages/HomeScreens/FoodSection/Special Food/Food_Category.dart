@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../../StateManagement/ModelClass.dart';
 import 'FoodItems.dart';
 
 class FoodCategory extends StatefulWidget {
@@ -20,6 +22,9 @@ class _FoodCategoryState extends State<FoodCategory> {
             height: 180,
             child: GestureDetector(
               onTap: () {
+                Provider.of<ModelClass>(context, listen: false)
+                    .clickedPage(index);
+
                 Navigator.push(
                     context,
                     MaterialPageRoute(

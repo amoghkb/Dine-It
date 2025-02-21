@@ -1,16 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dineit/StateManagement/ModelClass.dart';
 import 'package:dineit/firebase_options.dart';
 import 'package:dineit/src/Pages/HomeScreens/HomeScreenOfApp.dart';
 import 'package:dineit/src/Pages/LandingPages/Welcome_Page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(DineIt());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => ModelClass(),
+      )
+    ],
+    child: DineIt(),
+  ));
 }
 
 class DineIt extends StatefulWidget {
